@@ -7,6 +7,14 @@ import styles from "./UsersList.module.css";
 export const UsersList = () => {
   const count = useSelector(selectTotalUsers);
   const users = useSelector(selectAllUsers);
+
+  // memoization(이하 메모이제이션), 즉 이전에 계산한 값을 메모리에 저장하여
+  // 값이 변경됐을 경우에만 계산하도록 동작하는 것 개선하는 법
+  // 하지만 성능 문제가 있을 수 있음. => createSelector 를 사용하면 된다.
+  // const users = useSelector(
+  //   (state) => state.users.filter(user => user.subscribed)
+  // );
+
   const dispatch = useDispatch();
 
   const handleUpdateUser = async (userData) => {

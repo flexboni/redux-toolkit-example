@@ -16,12 +16,14 @@ import articleReducer from "../features/articles/articlesSlice";
 import userReducer from "../features/users/usersSlice";
 import commentReducer from "../features/comments/commentsSlice";
 import additionalMiddleware from "additional-middleware";
+import booksReducer from "../features/books/booksSlice";
 
 const rootReducer = combineReducers({
   [pokemonApi.reducerPath]: pokemonApi.reducer,
   articles: articleReducer,
   users: userReducer,
   comments: commentReducer,
+  books: booksReducer,
 });
 
 export const store = configureStore({

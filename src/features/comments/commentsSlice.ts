@@ -7,10 +7,18 @@ export const slice = createSlice({
   name: "comments",
   initialState: commentsAdapter.getInitialState(),
   reducers: {},
+  // extraReducers: (builder) => {
+  //   builder.addCase(fetchArticle.fulfilled, (state, action) => {
+  //     commentsAdapter.upsertMany(state, action.payload.comments);
+  //   });
+  // },
   extraReducers: (builder) => {
-    builder.addCase(fetchArticle.fulfilled, (state, action) => {
-      commentsAdapter.upsertMany(state, action.payload.comments);
-    });
+    builder
+      .addCase(fetchArticle.pending, (state) => {})
+      .addCase(fetchArticle.fulfilled, (state, action) => {
+        commentsAdapter.upsertMany(state, action.payload.comments);
+      })
+      .addCase(fetchArticle.rejected, (state) => {});
   },
 });
 
